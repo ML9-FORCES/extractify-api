@@ -1,0 +1,1 @@
+web: gunicorn extractifyapi.wsgi --log-file -
