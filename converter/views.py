@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 from pdf2image import convert_from_path
 from rest_framework.response import Response
@@ -20,9 +20,9 @@ def pdftoimg(request):
             for chunk in pdf.chunks():
                 destination.write(chunk)
         images = convert_from_path('./converter/tempfiles/temp.pdf')
-        print(images)
         for i in range(len(images)):
             # Save pages as images in the pdf
             images[i].save('./converter/tempfiles/temp' +
                            str(i) + '.jpg', 'JPEG')
-    return HttpResponse("All good")
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'failure'})
