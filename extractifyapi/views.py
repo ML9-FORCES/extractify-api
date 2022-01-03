@@ -11,8 +11,5 @@ from rest_framework.response import Response
 # upon function definition
 
 
-def hello_geek(request):
-
-    # This will return Hello Geeks
-    # string as HttpResponse
-    return HttpResponse("Hello Geeks")
+def ping(request):
+    return HttpResponse("Pong")
