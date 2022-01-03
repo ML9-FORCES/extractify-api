@@ -1,4 +1,4 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 from pdf2image import convert_from_path
 from rest_framework.response import Response
@@ -15,17 +15,14 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def pdftoimg(request):
     if(request.method == "POST"):
-        pdf = request.data
-        images = convert_from_path(pdf)
+        pdf = request.FILES['pdf_name']
+        with open('./converter/tempfiles/temp.pdf', 'wb+') as destination:
+            for chunk in pdf.chunks():
+                destination.write(chunk)
+        images = convert_from_path('./converter/tempfiles/temp.pdf')
         for i in range(len(images)):
             # Save pages as images in the pdf
-            images[i].save('page' + str(i) + '.jpg', 'JPEG')
-        return Response({'key': request.data}, status=status.HTTP_200_OK)
-
-    # except:
-    #     Result = "NO pdf found"
-    #     ("Result", Result)
-
-    # else:
-    #     Result = "success"
-    #     messagebox.showinfo("Result", Result)
+            images[i].save('./converter/tempfiles/temp' +
+                           str(i) + '.jpg', 'JPEG')
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'failure'})
