@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from extractifyapi.views import ping
+from apps.endpoints.urls import urlpatterns as endpoints_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ping),
     path(r'converter/', include('converter.urls')),
-
 ]
+
+urlpatterns += endpoints_urlpatterns

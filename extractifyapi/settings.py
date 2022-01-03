@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "converter",
     "corsheaders",
+    "apps.endpoints.apps.EndpointsConfig"
 ]
 
 MIDDLEWARE = [
