@@ -1,1 +1,1 @@
-web: gunicorn extractifyapi.wsgi --log-file -
+web: gunicorn extractifyapi.wsgi
