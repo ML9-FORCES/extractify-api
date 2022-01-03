@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mh2@_jy*g)+qjsn_qlv8(rhbmkf4ae+5=^@e3ly(z73w$&(32c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['extractify.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
