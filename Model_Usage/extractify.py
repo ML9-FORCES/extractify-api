@@ -2,6 +2,8 @@ from transformers import BertTokenizer
 import tensorflow as tf
 import numpy as np
 import json
+import gdown
+import os
 
 class bert_classifier:
     def __init__(self):
@@ -116,6 +118,10 @@ class Wrapper:
     self.classification()
     self.linking()
     return self.data
+
+url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
+if not os.path.isdir('./MODELS'):
+  gdown.download_folder(url,output='./MODELS', quiet=True)
 
 classifier = bert_classifier()
 linker = linking_classifier() 
