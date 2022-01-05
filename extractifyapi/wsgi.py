@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 """
 
 import os
-import gdown
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'extractifyapi.settings')
@@ -25,10 +24,7 @@ from apps.ml.classifier.ml import linking_classifier
 try:
     registry = MLRegistry() # create ML registry
     
-    #Downloading Model - Single time step
-    url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
-    if not os.path.isdir('/MODELS'):
-        gdown.download_folder(url,output='/MODELS', quiet=True)
+    
     
     # Bert classifier
     bc=bert_classifier()

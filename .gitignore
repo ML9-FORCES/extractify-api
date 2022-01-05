@@ -108,6 +108,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+iitm2/
 
 # Spyder project settings
 .spyderproject
@@ -124,5 +125,5 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
-iitm2/
+
 MODELS/

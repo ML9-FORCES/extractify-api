@@ -95,11 +95,10 @@ class PredictView(views.APIView):
             alg_index = 0 if rand() < 0.5 else 1
 
         algorithm_object = registry.endpoints[algs[alg_index].id]
-        # processing = algorithm_object.preprocessing(request.data)
         prediction = algorithm_object.generate(request.data)
 
 
-        label = prediction["label"] if "label" in prediction else "error"
+        label = prediction
         ml_request = MLRequest(
             input_data=request.data,
             full_response=prediction,
@@ -112,3 +111,5 @@ class PredictView(views.APIView):
         prediction["request_id"] = ml_request.id
 
         return Response(prediction)
+
+# class ProcessView(views.APIView):

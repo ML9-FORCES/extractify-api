@@ -2,10 +2,18 @@ from transformers import BertTokenizer
 import tensorflow as tf
 import numpy as np
 import json
+import os
+import gdown
+
+#Downloading Model - Single time step
+url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
+if not os.path.isdir('/MODELS'):
+    gdown.download_folder(url,output='MODELS', quiet=True)
+
 
 class bert_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model('/MODELS/bert_classifier')
+        self.model = tf.keras.models.load_model('MODELS/bert_classifier')
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 
@@ -38,7 +46,7 @@ class bert_classifier:
 
 class linking_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model('/MODELS/linking')  
+        self.model = tf.keras.models.load_model('MODELS/linking')  
     
     def ext(self,box):
         width=box[2]-box[0]
