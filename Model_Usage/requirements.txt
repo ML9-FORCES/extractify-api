@@ -1,3 +1,4 @@
 tensorflow-cpu
 transformers
 numpy
+json
