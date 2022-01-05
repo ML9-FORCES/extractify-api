@@ -38,7 +38,7 @@ class bert_classifier:
 
 class linking_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model('/extractifyapi/MODELS/linking')  
+        self.model = tf.keras.models.load_model('/MODELS/linking')  
     
     def ext(self,box):
         width=box[2]-box[0]
