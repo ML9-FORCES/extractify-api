@@ -123,7 +123,7 @@ def load():
     if not os.path.isdir(path):
         gdown.download_folder(url,output=path, quiet=False)
 
-load()
+#load()
 classifier = bert_classifier()
 linker = linking_classifier() 
 wrapper = Wrapper(classifier,linker)

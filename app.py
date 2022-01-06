@@ -5,15 +5,19 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-ext.load()
 
 # To run python file without re-running the flask command
 def before_request():
     app.jinja_env.cache = {}
 app.before_request(before_request)
 
-
 # Routes
+@app.route('/')
+def home():
+    ext.load()
+    return 'Dukh Dard Kasht Pidha'
+
+
 @app.route('/api')
 def api():
     ext.load()
