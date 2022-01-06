@@ -7,7 +7,7 @@ import gdown
 
 #Downloading Model - Single time step
 url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
-if not os.path.isdir('/MODELS'):
+if not os.path.isdir('MODELS'):
     gdown.download_folder(url,output='MODELS', quiet=True)
 
 

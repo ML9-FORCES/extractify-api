@@ -90,23 +90,23 @@ class PredictView(views.APIView):
                 {"status": "Error", "message": "ML algorithm selection is ambiguous. Please specify algorithm version."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        alg_index = 0
+        
         if algorithm_status == "ab_testing":
             alg_index = 0 if rand() < 0.5 else 1
 
+        alg_index = 0
         algorithm_object = registry.endpoints[algs[alg_index].id]
         prediction = algorithm_object.generate(request.data)
 
-
-        label = prediction
         ml_request = MLRequest(
             input_data=request.data,
             full_response=prediction,
-            response=label,
+            response=prediction,
             feedback="",
             parent_mlalgorithm=algs[alg_index],
         )
         ml_request.save()
+        # deactivate_other_statuses(status_1)
 
         prediction["request_id"] = ml_request.id
 
