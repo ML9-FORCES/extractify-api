@@ -5,7 +5,7 @@ import json
 import gdown
 import os
 
-path='static/MODELS'
+path='./static/MODELS'
 
 class bert_classifier:
     def __init__(self):
