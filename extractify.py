@@ -118,7 +118,7 @@ class Wrapper:
 
 url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
 if not os.path.isdir('./MODELS'):
-  gdown.download_folder(url,output='./MODELS', quiet=True)
+  gdown.download_folder(url,output='./MODELS', quiet=False)
 
 classifier = bert_classifier()
 linker = linking_classifier() 

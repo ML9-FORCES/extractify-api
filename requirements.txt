@@ -4,5 +4,4 @@ flask-cors
 tensorflow-cpu
 transformers
 numpy
-json
 gdown==4.1.1
