@@ -14,8 +14,7 @@ app.before_request(before_request)
 # Routes
 @app.route('/')
 def home():
-    ext.load()
-    return 'Dukh Dard Kasht Pidha'
+    return 'Extractify-API'
 
 
 @app.route('/api')
