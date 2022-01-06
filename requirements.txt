@@ -5,3 +5,4 @@ tensorflow-cpu
 transformers
 numpy
 gdown==4.1.1
+pdf2image
