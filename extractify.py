@@ -5,9 +5,11 @@ import json
 import gdown
 import os
 
+path='static/MODELS'
+
 class bert_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model('/MODELS/bert_classifier')
+        self.model = tf.keras.models.load_model(path+'/bert_classifier')
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 
@@ -40,7 +42,7 @@ class bert_classifier:
 
 class linking_classifier:
   def __init__(self):
-    self.model = tf.keras.models.load_model('/MODELS/linking')  
+    self.model = tf.keras.models.load_model(path+'/linking')  
  
   def ext(self,box):
     width=box[2]-box[0]
@@ -118,8 +120,8 @@ class Wrapper:
 
 def load():
     url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
-    if not os.path.isdir('/MODELS'):
-        gdown.download_folder(url,output='/MODELS', quiet=False)
+    if not os.path.isdir('path'):
+        gdown.download_folder(url,output='path', quiet=False)
 
 load()
 classifier = bert_classifier()
