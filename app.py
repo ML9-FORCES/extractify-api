@@ -20,7 +20,7 @@ def api():
     return jsonify(ext.generate(json))
     
 @app.route('/pdf_converter')
-def pdftoimg(request):
+def pdftoimg():
     if(request.method == "POST"):
         pdf = request.FILES['pdf_name']
         with open('./static/tempfiles/temp.pdf', 'wb+') as destination:
@@ -31,8 +31,8 @@ def pdftoimg(request):
             # Save pages as images in the pdf
             images[i].save('./static/tempfiles/temp' +
                            str(i) + '.jpg', 'JPEG')
-        return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'failure'})
+        return jsonify({'status': 'success'})
+    return jsonify({'status': 'failure'})
 
 # init
 if __name__ == '__main__':
