@@ -120,8 +120,8 @@ class Wrapper:
 
 def load():
     url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
-    if not os.path.isdir('path'):
-        gdown.download_folder(url,output='path', quiet=False)
+    if not os.path.isdir(path):
+        gdown.download_folder(url,output=path, quiet=False)
 
 load()
 classifier = bert_classifier()
