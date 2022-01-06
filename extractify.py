@@ -118,8 +118,9 @@ class Wrapper:
     self.linking()
     return self.data
 
+
 def load():
-    url='https://drive.google.com/drive/folders/1UjpkmlaFIExoE4slCLdaEAxjTBOZ28Fy'
+    url='https://drive.google.com/drive/folders/1iWytxFuWd8J9n7Sgk-yX_GDN7ZxPBkk8'
     if not os.path.isdir(path):
         gdown.download_folder(url,output=path, quiet=False)
 
