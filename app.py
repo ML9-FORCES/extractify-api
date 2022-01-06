@@ -14,11 +14,17 @@ app.before_request(before_request)
 
 
 # Routes
-@app.route('/api')
+@app.route('/api',methods = ['GET','POST'])
 def api():
-    ext.load()
-    json = request.json
-    return jsonify(ext.generate(json))
+    if(request.method=="GET"):
+        ext.load()
+        json = request.json
+        return jsonify(ext.generate(json))
+        
+    if(request.method=="POST"):   
+        ext.load()
+        json = request.json
+        return jsonify(ext.generate(json))
     
 @app.route('/pdf_converter')
 def pdftoimg():
