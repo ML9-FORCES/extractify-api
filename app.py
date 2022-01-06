@@ -14,6 +14,7 @@ app.before_request(before_request)
 # Routes
 @app.route('/api')
 def api():
+    ext.load()
     json = request.json
     return jsonify(ext.generate(json))
 
