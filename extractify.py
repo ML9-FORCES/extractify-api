@@ -9,7 +9,7 @@ path='./static/MODELS'
 
 class bert_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model(path+'/bert_classifie')
+        self.model = tf.keras.models.load_model(path+'/bert_classifier')
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 
@@ -42,7 +42,7 @@ class bert_classifier:
 
 class linking_classifier:
   def __init__(self):
-    self.model = tf.keras.models.load_model(path+'/linkin')  
+    self.model = tf.keras.models.load_model(path+'/linking')  
  
   def ext(self,box):
     width=box[2]-box[0]
