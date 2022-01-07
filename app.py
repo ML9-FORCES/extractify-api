@@ -16,12 +16,10 @@ app.before_request(before_request)
 @app.route('/api',methods = ['GET','POST'])
 def api():
     if(request.method=="GET"):
-        ext.load()
         json = request.json
         return jsonify(ext.generate(json))
         
-    if(request.method=="POST"):   
-        ext.load()
+    if(request.method=="POST"):
         json = request.json
         return jsonify(ext.generate(json))
     
