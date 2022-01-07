@@ -94,7 +94,10 @@ class Wrapper:
     self.values=[]
 
   def preprocessing(self,json):
+    self.data = None
     self.data=json
+    self.values=[]
+    self.keys=[]
     try:
       for i in self.data:
         del i['label']
