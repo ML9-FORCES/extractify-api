@@ -112,6 +112,7 @@ venv.bak/
 
 #ML-Model
 MODELS/
+tempfiles/
 
 # Spyder project settings
 .spyderproject
