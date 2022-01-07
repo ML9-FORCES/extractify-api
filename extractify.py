@@ -5,13 +5,15 @@ import json
 import gdown
 import os
 
-path='./static/MODELS'
-
+#bert_classifier Class
 class bert_classifier:
     def __init__(self):
-        self.model = tf.keras.models.load_model(path+'/bert_classifier')
+        path='./static/MODELS/bert_classifier'
+        url='https://drive.google.com/drive/folders/1u8pPnb2qPTt67Yf3v8enC2pF2HpyWaEc'
+        if not os.path.isdir(path):
+            gdown.download_folder(url,output=path, quiet=False)
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
-
+        self.model = tf.keras.models.load_model(path) 
 
     def preprocessing(self, input_data):
         tokens = self.tokenizer.encode_plus(input_data, max_length=50,
@@ -37,12 +39,16 @@ class bert_classifier:
             prediction = self.postprocessing(prediction)
         except Exception as e:
             return {"status": "Error", "message": str(e)}
-
         return prediction
 
+#linking Classifier Class
 class linking_classifier:
   def __init__(self):
-    self.model = tf.keras.models.load_model(path+'/linking')  
+    path='./static/MODELS/linking'
+    url='https://drive.google.com/drive/folders/1vDUBSS6cXyZdQTwtcXhg8BXBGGR_s7FT'
+    if not os.path.isdir(path):
+      gdown.download_folder(url,output=path, quiet=False)
+    self.model = tf.keras.models.load_model(path)  
  
   def ext(self,box):
     width=box[2]-box[0]
@@ -78,6 +84,7 @@ class linking_classifier:
       return {"status": "Error", "message": str(e)}
     return prediction
 
+#Wrapper Class
 class Wrapper:
   def __init__(self,classifier,linker):
     self.data = None
@@ -119,12 +126,6 @@ class Wrapper:
     return self.data
 
 
-def load():
-    url='https://drive.google.com/drive/folders/1iWytxFuWd8J9n7Sgk-yX_GDN7ZxPBkk8'
-    if not os.path.isdir(path):
-        gdown.download_folder(url,output=path, quiet=False)
-
-load()
 classifier = bert_classifier()
 linker = linking_classifier() 
 wrapper = Wrapper(classifier,linker)
