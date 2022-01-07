@@ -11,3 +11,4 @@
 - **/api** 
   - ***Input*** - Input-OCR-JSON (as raw-json in request body)
   - ***Output*** - Output-JSON with Classification & Linking
+  - ***Method*** - POST/GET
